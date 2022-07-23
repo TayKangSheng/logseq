@@ -1,6 +1,15 @@
-# Logseq
-
-Public notes written with [Logseq](https://logseq.com/) and published using GitHub Pages. 
+ __        ______   ______   ______  ________  ______  
+|  \      /      \ /      \ /      \|        \/      \ 
+| ▓▓     |  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\ ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓\
+| ▓▓     | ▓▓  | ▓▓ ▓▓ __\▓▓ ▓▓___\▓▓ ▓▓__   | ▓▓  | ▓▓
+| ▓▓     | ▓▓  | ▓▓ ▓▓|    \\▓▓    \| ▓▓  \  | ▓▓  | ▓▓
+| ▓▓     | ▓▓  | ▓▓ ▓▓ \▓▓▓▓_\▓▓▓▓▓▓\ ▓▓▓▓▓  | ▓▓ _| ▓▓
+| ▓▓_____| ▓▓__/ ▓▓ ▓▓__| ▓▓  \__| ▓▓ ▓▓_____| ▓▓/ \ ▓▓
+| ▓▓     \\▓▓    ▓▓\▓▓    ▓▓\▓▓    ▓▓ ▓▓     \\▓▓ ▓▓ ▓▓
+ \▓▓▓▓▓▓▓▓ \▓▓▓▓▓▓  \▓▓▓▓▓▓  \▓▓▓▓▓▓ \▓▓▓▓▓▓▓▓ \▓▓▓▓▓▓\
+                                                   \▓▓▓
+                                                       
+Public notes written with Logseq (https://logseq.com/) and published using GitHub Pages. 
 
 ## How to use
 
