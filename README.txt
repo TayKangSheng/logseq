@@ -9,7 +9,7 @@
  \▓▓▓▓▓▓▓▓ \▓▓▓▓▓▓  \▓▓▓▓▓▓  \▓▓▓▓▓▓ \▓▓▓▓▓▓▓▓ \▓▓▓▓▓▓\
                                                    \▓▓▓
                                                        
-Public notes written with Logseq (https://logseq.com/) and published using GitHub Pages. 
+Public notes written with Logseq (https://logseq.com/) and published using GitHub Pages. Notes can be found at https://www.taykangsheng.com/logseq .
 
 ## How to use
 
