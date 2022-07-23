@@ -1,2 +1,7 @@
 - Chapter 1: Reliable, Scalable, and Maintainable Applications
-	- yada yada yada
+	- In the past we have applications that are compute intensive, but these days most applications are data intensive. Many applications needs to store data, cache data, create indexes (eg Elastic Search), stream data, process / transform data. The speed at which data is managed has become a bigger issue or limiting factor rather than whether Raw CPU power is enough.
+	- An application's Data System is usually built from standard building blocks put together to offer a functionality. For example, in a Rails app, the Data System can be a combination of RDBMS, Redis and ElasticSearch put together to offer a set of data through its API. Most engineers do not build their data storage engine because the existing standard building blocks are perfectly good tool for the job.
+	- Its important to understand the needs of your application and choose the right building blocks to build your Data Intensive Application. This book will take us through principles and practicalities of designing a data system; and analysing existing tools.
+	- Fundamentals of a Data System: Reliability, Scalability and Maintainability.
+		-
+	-
