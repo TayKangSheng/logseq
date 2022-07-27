@@ -68,3 +68,63 @@
 		- There is no 1 size fits all and depends on the requirements of your application. However there are many patterns and techniques that are frequently used by many different type of applications. We will explore them in the following chapters.
 	-
 - Chapter 2: Data Models and Query Languages
+  collapsed:: true
+	- Data Models have profound effect on the design of the application. But mastering a single Data Model takes a lot of effort. In this chapter, we will explore a range of Data Model.
+	- Relational Model vs Document Model
+		- Relational Model was proposed in 1970s by Edgar Codd and dominated the the market since. In Relational Model, data are organised into "relations" (tables in SQL), where each relation is an unordered collection of tuples (rows in SQL) Main competitors in 1970s and 1980s are Network Model and Hierarchy Model. In 2010s, the main competitors is "NoSQL".
+			- NoSQL doesn't actually refer to any particular technology. NoSQL was a catchy twitter hashtag for a meetup on open source, distributed and non-relational database. But a number of database systems are now associated with NoSQL and retroactively reinterpreted as Not Only SQL.
+		- Relational Model does not fit perfectly with Object Oriented Programming and Document Model might be a better fit.
+			- In Relational Model, data are represented as tuples of data and some fields are foreign keys pointing to other tables. A layer of translation is required to map the data into an object representation which can be done manually or is made simpler using ORM tools like ActiveRecord that comes with a certain set of conventions.
+			- In the Document Model, the entire nesting of data is represented in the database in JSON without a layer of translation.
+				- ```json
+				  {
+				    name: "bill",
+				    positions: [
+				      {"job_title": "Co-chair", "organization": "B & M Gates Foundation"},
+				      {"job_title": "Co-founder, Chairman", "organizatin": "Microsoft"}
+				    ],
+				    ...
+				  }
+				  ```
+		- Relational Model does Many-to-One and Many-to-Many Relationships better than Document Model.
+			- In Relational Model, data is normalised into tables and records reference a common set of data using foreign keys. Joins are easy to fetch information across tables.
+			- In Document Model, data can be normalised into other documents but joins are not well supported. So the joins are emulated by application code to make multiple queries to the database to fetch required data from another document.
+			- Moreover, even if the initial version of an application fits well in a join-free document model, data has a tendency of becoming more interconnected as features are added to the application.
+		- Precursor to Document Database,
+			- In 1970s, the most popular database is IBM's Information Management System (IMS) created for Apollo Space Program for stock keeping. IMS is still maintained today, running on OS/390 on IBM mainframe.
+			- Design of IMS is called Hierarchical Model which represents all data as a tree of records nested within records. Each record has exactly 1 parent. Its worked well with One-to-Many relationships but does not support Many-to-Many well and also does not support joins.
+			- Various solutions were proposed and the 2 main solutions are Network Model and Relational Model.
+				- Network Model (also called CODASYL model) is a generalisation of Hierarchical Model. Each record can have more than 1 parent. In order to access a record, you have to follow an access path from the root record like searching through a LinkedList from the root node. Because each record can have have multiple parents, the application developer also have to keep track of the various relationships. It can be a problem if you didn't already know the access path. It can be like finding data in a n-dimensional space. The manual access path allows making the most efficient use of the limited hardware capabilities in 1970s, but it makes updating database complicated and inflexible which also needs you to change access path and update application code.
+				- Relational Model has all data laid out in the open. Data is queried with a set of conditions using a query optimiser. The query optimiser will decided whats the best way to fetch the data and they are complicated programs, but the programmer doesn't need to decide.
+			- Document Model adopted how Hierarchical Model nests data but adopted how Relational Model reference data using unique identifier.
+		- Document Model can represent your application better if your application has a document-like structure. Relational Model can be easier to scale if your application requires Many-to-Many relationships. Which one works better depends on your application.
+		- Document Model are called schema-less but its misleading because there is a schema just that its not enforced by the database. A more accurate term is schema-on-read (schema is interpreted on read) and schema-on-write for Relational Model. Schema differences is particularly noticeably when you need to change Schema. schema-on-read can just change schema on the fly and depend on application code to handle schema changes, but schema-on-write will need to do schema migration.
+	- SQL is a declarative language. It specifies the pattern of data you want, conditions the results must meet and how you want the data to be transformed. It lets the database system's query optimiser to do its job. Compared to an imperative API, using query optimiser is easier to optimise in the long run. CSS is a declarative language but on the web!!
+	- Graph-like Data Models can be used to model complex Many-to-Many relationships. A graph consist of Vertices and Edges, with vertices able to have unlimited number of edges. Each Vertex and Edge has a unique identifier; and Vertex can contain data with any shape and Edge contains a tail and head each pointing to a Vertex.
+		- Property Graph Model & Cypher Query Language
+			- A property graph store can be naively modelled by 2 relational tables. 1) `vertices` table with unique id and properties JSON field. 2) `edges` table with unique id, tail vertex reference to `vertices` table, head vertex reference to `vertices` table, label of the relationship between the 2 vertices and a properties JSON field.
+			- With the unique identifier, given a vertex you can look up all outgoing and incoming edges. From there you can traverse the graph model by following the next vertex from the edges.
+			- The data model becomes very flexible as there is no limit on what each vertex contains, what relationship there is between 2 vertices using an edge with a label. You can easily add a new edge for a vertex without any schema migrations.
+			- Cypher Query Language, build for Neoj4 graph database, is a declarative query language to manipulate graph database. Like SQL the query optimiser decides which is the best way to look up the data, probably how best to traverse the database. (See book or online for examples).
+			- If your Graph store is modelled in relational table, it is possible to query directly using SQL but it gets complicated when you need to traverse the graph multiple layers to match your conditions. (See book for example).
+		- Triple-Store model & SPARQL Query Language
+			- Triple-Store Model is similar (but not exactly) to Property Graph Model. All information is represented by a 3 part statement (subject, predicate, object). The examples below uses the a format called Turtle.
+				- `subject` is a Vertex, represented by a variable name which serves as its unique identifier, and identified as a type of vertex. eg. `_:lucy  a  :Person`.
+				- `object` is either a primitive datatype that is a value, or another vertex in the graph. eg. `_:lucy  :name  "Lucy"` or `_:lucy  :bornIn  _:idaho`
+				- `predicate` is a label to name the relationship between the `subject` and `object`. If the object is a vertex then the `predicate` is an edge, if the object is a primitive datatype then the `predicate` represents the property of that vertex. eg. in the previous example, `:name` represents a property and `:bornIn` represents an edge.
+				- See book for more examples.
+			- Using the 3 part statement (subject, predicate, object), it should be possible to construct a graph model for all the data and their relationships.
+			- SPARQL is a query language for triple-stores using RDF data model. is acronym for SPARQL Protocol and RDF Query Language. RDF means Resource Description Framework and Turtle language is a human readable format for RDF data. Its predates Cypher and its syntax is more concise.
+		- Datalog. OG of graph data model, studied extensively in 1980s.
+			- Like triple-stores, Datalog uses the predicate(subject, model) to describe data but its query language uses a iterative approach to qualify and identify data.
+			- See book for more examples.
+	- Summary
+		- There are many different types of data models, more than what was covered here.
+		- 3 main data models are
+			- Relational Model
+			- Document Model
+			- Graph Model. Can be modelled using Relational model but often awkward. Shares more similarity with Document Model because of the schema-on-read design.
+		- Different data model works better with different types of application. Pick wisely.
+		-
+		-
+		-
