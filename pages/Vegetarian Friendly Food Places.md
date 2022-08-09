@@ -1,22 +1,35 @@
 - Banh Mi Thit by Star Baguette
-	- Geylang
+	- Location: Geylang
+	- Price: $
 - Curious Palette
-	- Dhoby Ghaut
+	- Location: Dhoby Ghaut
+	- Price: $$$
+	- Good for lunch but not good for Dinner.
 - Dough at Chijmes
-	- Cityhall
+	- Location: Cityhall
+	- Price: $$
 - Hans Im Gluck
-	- Raffles Place
+	- Location: Raffles Place
+	- Price: $$$
 - Merci Marcel
-	- Telok Ayer
+	- Location: Telok Ayer
+	- Price: $$$
 - Miam Miam
-	- Bugis
+	- Location: Bugis
+	- Price: $$
 - Mos Burger
-	- Paya Lebar
+	- Location: Paya Lebar
+	- Price: $
 - PS Cafe
-	- Cityhall
+	- Location: Cityhall
+	- Price: $$$
 - Symmetry
-	-
+	- Location: Kampong Glam
+	- Price: $$
 - Tendon Kohaku
-	- Suntec City
+	- Location: Suntec City
+	- Price: $$
 - Wild Honey
-	- Orchard
+	- Location: Orchard
+	- Price: $$$
+-

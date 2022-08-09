@@ -18,10 +18,10 @@
   :block/updated-at 1658585375392}
  {:block/name "contents",
   :block/created-at 1658566841811,
-  :block/updated-at 1658593502213}
+  :block/updated-at 1658926114801}
  {:block/name "designing data intensive application",
   :block/created-at 1658566828343,
-  :block/updated-at 1658851802896}
+  :block/updated-at 1658929919346}
  {:block/name "doing",
   :block/created-at 1658585375392,
   :block/updated-at 1658585375392}
@@ -43,6 +43,9 @@
  {:block/name "todo",
   :block/created-at 1658585375392,
   :block/updated-at 1658585375392}
+ {:block/name "vegetarian friendly food places",
+  :block/created-at 1658926114795,
+  :block/updated-at 1658926333160}
  {:block/name "wait",
   :block/created-at 1658585375392,
   :block/updated-at 1658585375392}
